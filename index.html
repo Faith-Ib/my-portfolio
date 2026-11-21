@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Faith Ibukunoluwa Ilesanmi – AI Automation &amp; Workflow Builder</title>
+<meta name="description" content="Faith Ibukunoluwa Ilesanmi builds automated systems and workflows in Airtable, monday.com, Make, n8n and Zapier for small businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF8F4; --bg2:#F3F0E9; --surface:#FFFFFF; --ink:#18181B; --muted:#5C5C66; --line:#E8E4DB;
+  --accent:#4338CA; --accent-tint:#ECEBFB; --amber:#B45309; --amber-tint:#FBEBD9;
+  --green:#15803D; --green-tint:#E3F3E9; --chip:#F1EEE7; --cta-bg:#18181B; --cta-ink:#FFFFFF; --cta-muted:#A9A9B4;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121216; --bg2:#17171C; --surface:#1D1D24; --ink:#F3F2EE; --muted:#A3A3AE; --line:#2B2B34;
+    --accent:#8F89F7; --accent-tint:#25244D; --amber:#F0A45D; --amber-tint:#3A2A18;
+    --green:#5FCB8B; --green-tint:#17301F; --chip:#26262E; --cta-bg:#0B0B0F; --cta-ink:#FFFFFF; --cta-muted:#A9A9B4;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121216; --bg2:#17171C; --surface:#1D1D24; --ink:#F3F2EE; --muted:#A3A3AE; --line:#2B2B34;
+  --accent:#8F89F7; --accent-tint:#25244D; --amber:#F0A45D; --amber-tint:#3A2A18;
+  --green:#5FCB8B; --green-tint:#17301F; --chip:#26262E; --cta-bg:#0B0B0F; --cta-ink:#FFFFFF; --cta-muted:#A9A9B4;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.alt{background:var(--bg2)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:28px}
+.links a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;padding:20px 0;border-bottom:2px solid transparent}
+.links a:hover,.links a.on{color:var(--ink);border-bottom-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:999px;font:600 .95rem/1 "Inter",system-ui,sans-serif;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.small{padding:10px 18px;font-size:.88rem}
+.btn.light{background:#fff;color:#18181B;border-color:#fff}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* shared type */
+.pill{display:inline-block;background:var(--accent-tint);color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px}
+h2{font-size:clamp(2.1rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.035em;margin:0 0 20px;font-weight:800}
+h3{margin:0 0 8px;font-size:1.05rem;letter-spacing:-.01em}
+p{margin:0 0 16px}
+.lead{color:var(--muted);font-size:1.08rem;max-width:56ch}
+.muted{color:var(--muted)}
+
+/* hero */
+.hero{padding:120px 0 96px}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--accent);display:block}
+h1{font-size:clamp(3rem,9vw,5.6rem);line-height:1;letter-spacing:-.045em;margin:0 0 26px;font-weight:800}
+h1 .last{color:var(--accent)}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--amber-tint);color:var(--amber);border:1px solid color-mix(in srgb,var(--amber) 25%,transparent);border-radius:999px;padding:9px 18px;font-size:.85rem;font-weight:600;margin-bottom:26px}
+.hero .lead{font-size:1.22rem;color:var(--muted);max-width:44ch}
+.hero .lead b{color:var(--ink);font-weight:700}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px}
+.facts .k{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:8px}
+.fact{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.fact:last-of-type{border-bottom:0;margin-bottom:8px}
+.ic{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.t-accent{background:var(--accent-tint);color:var(--accent)}
+.t-amber{background:var(--amber-tint);color:var(--amber)}
+.t-green{background:var(--green-tint);color:var(--green)}
+.fact small{display:block;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fact strong{font-size:.95rem;font-weight:600}
+.facts .btn{width:100%;margin-top:8px}
+
+/* cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.card p{color:var(--muted);font-size:.93rem;margin:0}
+.card .ic{margin-bottom:20px;width:48px;height:48px;border-radius:14px}
+.num{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.85rem;margin-bottom:20px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{background:var(--chip);color:var(--muted);font-size:.74rem;font-weight:600;padding:6px 12px;border-radius:999px}
+.split{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.split .lead{max-width:38ch;margin:0 0 20px}
+
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:32px 0 8px}
+.chip{font:600 .86rem/1 "Inter",system-ui,sans-serif;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.work{padding:0;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;display:block;width:100%}
+.work .top{height:140px;display:grid;place-items:center}
+.work .top .ic{width:60px;height:60px;border-radius:50%;background:var(--surface);margin:0;box-shadow:0 0 0 8px color-mix(in srgb,currentColor 12%,transparent)}
+.work .body{padding:24px 26px 28px}
+.cat{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--amber);margin-bottom:8px}
+.work h3{font-size:1.15rem}
+.work[hidden]{display:none}
+dialog{border:1px solid var(--line);border-radius:24px;background:var(--surface);color:var(--ink);padding:0;max-width:720px;width:calc(100% - 32px);max-height:calc(100vh - 32px)}
+.video{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;margin-top:8px}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+dialog::backdrop{background:rgba(10,10,14,.55)}
+.dlg{padding:32px}
+.dlg h4{margin:22px 0 6px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dlg p{margin:0;color:var(--ink)}
+.dlg .x{float:right;background:var(--chip);color:var(--ink);border:0;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+.step{border-top:3px solid var(--accent);padding-top:18px}
+.step .n{font-size:.8rem;font-weight:800;color:var(--accent);margin-bottom:22px}
+.step p{color:var(--muted);font-size:.92rem}
+
+/* faq */
+.faq{max-width:780px;margin-top:36px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-weight:600;font-size:1.02rem}
+summary::-webkit-details-marker{display:none}
+summary .pm{flex:none;width:30px;height:30px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:1rem;transition:transform .2s}
+details[open] summary .pm{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 50px 22px 0;margin:0}
+
+/* cta + footer */
+.cta{background:var(--cta-bg);color:var(--cta-ink);text-align:center;padding:110px 0;background-image:radial-gradient(ellipse 55% 60% at 50% 0%,rgba(99,91,255,.32),transparent 70%)}
+.cta .pill{background:transparent;color:#B5B0FF;padding:0}
+.cta h2{max-width:14ch;margin-left:auto;margin-right:auto}
+.cta p{color:var(--cta-muted);max-width:52ch;margin:0 auto 32px;font-size:1.05rem}
+footer{padding:32px 0;color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+@media (max-width:900px){
+  .about{grid-template-columns:1fr;gap:36px}
+  .grid3{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  section{padding:64px 0}
+  .hero{padding:72px 0 64px}
+  .links{display:none}
+  .grid3,.steps{grid-template-columns:1fr}
+  details p{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" id="logo"></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn small" href="#contact">Let's Talk</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><i></i><span id="role"></span></div>
+      <h1 id="name"></h1>
+      <div class="badge" id="badge"></div>
+      <p class="lead" id="tagline"></p>
+      <div class="actions">
+        <a class="btn dark" href="#work">View My Work</a>
+        <a class="btn" href="#contact">Let's Talk</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap about">
+      <div>
+        <span class="pill">Who I am</span>
+        <h2 id="name2"></h2>
+        <div id="aboutText"></div>
+      </div>
+      <aside class="facts">
+        <div class="k">Quick facts</div>
+        <div id="facts"></div>
+        <a class="btn dark" href="#contact">Let's Talk</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="problems">
+    <div class="wrap">
+      <span class="pill">The reality</span>
+      <h2 id="problemTitle"></h2>
+      <p class="lead" id="problemLead"></p>
+      <div class="grid3" id="problems-grid"></div>
+    </div>
+  </section>
+
+  <section id="benefits" class="alt">
+    <div class="wrap">
+      <div class="split">
+        <div><span class="pill">How I fix it</span><h2 id="benefitTitle" style="margin:0"></h2></div>
+        <p class="lead" id="benefitLead"></p>
+      </div>
+      <div class="grid3" id="benefits-grid"></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="pill">What I do</span>
+      <h2>Services</h2>
+      <div class="grid3" id="services-grid"></div>
+    </div>
+  </section>
+
+  <section id="work" class="alt">
+    <div class="wrap">
+      <div class="split">
+        <div><span class="pill">Real builds</span><h2 style="margin:0">My work</h2></div>
+        <p class="lead" id="workLead"></p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects by industry"></div>
+      <div class="grid3" id="work-grid" style="margin-top:24px"></div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <span class="pill">How it goes</span>
+      <h2>Working with me</h2>
+      <div class="steps" id="steps"></div>
+    </div>
+  </section>
+
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <span class="pill">Got questions</span>
+      <h2>Let's clear things up</h2>
+      <div class="faq" id="faq-list"></div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="wrap">
+      <span class="pill">Ready to work together?</span>
+      <h2>Let's build something that actually works</h2>
+      <p>Tell me what needs solving and we'll work out the next step together.</p>
+      <a class="btn light" id="bookBtn" href="#">Get in touch</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="copy"></span>
+    <span id="footerLinks"></span>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-label="Project details"><div class="dlg" id="dlgBody"></div></dialog>
+
+<script>
+/* ============ EDIT THIS BLOCK ONLY ============ */
+const SITE = {
+  first: "Faith", last: "Ilesanmi", initial: "I",
+  full: "Faith Ibukunoluwa Ilesanmi",
+  role: "AI Automation & Workflow Builder",
+  badge: "Airtable · monday.com · Make · n8n · Zapier",
+  tagline: "I design and build <b>automated systems and workflows</b> that cut manual work, keep teams organised, and help businesses run smoothly.",
+  about: [
+    "My focus is simple: helping businesses save time, cut manual work, and stay organised through smart automation and well-built systems. Every project I take on starts with a real business problem, not a tool.",
+    "I build with Airtable, monday.com, Make, n8n and Zapier. My projects so far include an inventory and forecasting system for an event company, a referral management system for medical practices, workspaces for a property buying business and a shortlet company, and a management hub for a tutoring company.",
+    "I work in clear stages: understand the problem, design the system, build and test it, then hand it over with documentation so your team can run it without me."
+  ],
+  facts: [
+    {icon:"award", tone:"accent", label:"Role",       value:"AI Automation & Workflow Builder"},
+    {icon:"tool",  tone:"green",  label:"Core stack", value:"Airtable · monday.com · Make · n8n · Zapier"},
+    {icon:"check", tone:"amber",  label:"Industries", value:"Events · Healthcare · Real estate · Hospitality · Education"},
+    {icon:"pin",   tone:"accent", label:"Based in",   value:"Nigeria · Open to remote work"}
+  ],
+  problemTitle: "Manual processes cost you",
+  problemLead: "Most small businesses run on spreadsheets, chat messages and memory. Here's how that usually shows up:",
+  problems: [
+    {icon:"filter", tone:"amber", title:"Things slip through the cracks", text:"Stock runs out unnoticed, follow-ups get missed, and nobody finds out until a client or a patient is already affected."},
+    {icon:"repeat", tone:"amber", title:"Your team does repetitive work", text:"Copying data between sheets, chasing updates by message and sending reminders by hand takes hours that a good automation could handle."},
+    {icon:"down",   tone:"amber", title:"Information lives in too many places", text:"Different people keep different spreadsheets, so nobody has the full picture and decisions take longer than they should."}
+  ],
+  benefitTitle: "What you actually get",
+  benefitLead: "I build the systems that take the repetitive work off your team, so your business keeps running smoothly.",
+  benefits: [
+    {title:"Automatic alerts and reminders", text:"Low-stock warnings, appointment reminders and overdue follow-ups reach the right person without anyone having to chase."},
+    {title:"One central place for your data", text:"Clients, bookings, inventory or properties live in one connected system instead of scattered spreadsheets."},
+    {title:"Forms that feed your system", text:"Bookings, enquiries and complaints go straight into your system and notify the right people."},
+    {title:"Dashboards that show what is happening", text:"See statuses, issues and progress at a glance, without asking around."},
+    {title:"Built around your process", text:"Every system is designed around how your team actually works, including who sees what."},
+    {title:"Clear handover", text:"You get documentation and a walkthrough, so your team can use the system with confidence."}
+  ],
+  services: [
+    {title:"Custom Airtable systems",       text:"Connected databases for inventory, bookings, referrals, students and more, with the automations that keep them up to date.", tags:["Airtable","Automations"]},
+    {title:"monday.com workspaces",         text:"Boards, process stages, forms and dashboards that give teams and clients a clear view of every task and project.", tags:["monday.com","Boards"]},
+    {title:"Workflow automation",           text:"Scenarios and workflows that connect your tools and move information between them automatically.", tags:["Make","n8n","Zapier"]},
+    {title:"Forms, alerts and notifications", text:"Intake forms, restock alerts, reminders and task notifications that reach the right people at the right time.", tags:["Forms","Alerts"]},
+    {title:"Dashboards and role-based views", text:"Live dashboards and limited views, so each person only sees the information that is relevant to them.", tags:["Dashboards","Interfaces"]},
+    {title:"Process design and handover",   text:"Mapping how work should flow before building, then documenting the system so your team can own it.", tags:["Planning","Documentation"]}
+  ],
+  workLead: "Five real systems, built for real businesses. Filter by industry, or click a card for the breakdown and a video walkthrough.",
+  /* video: paste a YouTube, Loom or Google Drive share link between the quotes. Leave "" to hide the video. */
+  work: [
+    {
+      cat:"Event Planning", icon:"check", tone:"green",
+      title:"Inventory & Forecasting System",
+      blurb:"A central Airtable system that tracks stock across four cities and warns the team before items run out.",
+      problem:"An event planning company operating in four Nigerian cities had managers working from separate spreadsheets. Items ran out unnoticed until a client booked an event.",
+      build:"Linked tables for suppliers, products, inventory, bookings, themes and orders. Automations send low-stock restock alerts, handle booking form intake with owner notifications, alert team members to their tasks, and build theme budgets automatically.",
+      result:"One centralized system, no surprise stockouts, and faster budgets for clients.",
+      tools:["Airtable","Automations","Forms"],
+      video:""
+    },
+    {
+      cat:"Healthcare", icon:"repeat", tone:"accent",
+      title:"Patient Referral Management System",
+      blurb:"An Airtable system that tracks every referral from intake to completion, with a live dashboard.",
+      problem:"Medical practices receiving patients from multiple doctors and clinics had scattered patient data, lost communication logs, missed follow-ups and little visibility into referrals.",
+      build:"Six linked tables (Patients, Referring Doctors, Referrals, Appointments, Communication Log, Follow-ups), four automations (new referral alerts, 24-hour appointment reminders, overdue follow-up alerts, and auto-created follow-up tasks), and a live dashboard.",
+      result:"Less manual work, fewer no-shows, and full visibility from intake to completion.",
+      tools:["Airtable","Automations","Dashboard"],
+      video:""
+    },
+    {
+      cat:"Real Estate", icon:"pin", tone:"amber",
+      title:"Buyer Advocacy Workspace",
+      blurb:"A monday.com workspace for a property buying business, covering client tracking, process stages and market research.",
+      problem:"A buyer advocacy and property investment business, offering local purchases and interstate investment purchases, relied on spreadsheets and manual follow-ups to keep clients and research organised.",
+      build:"Three folders: client-facing property boards (address, campaign type, state, price, auction dates, rent, rental yield, days on market, status), internal client process boards for onboarding, finance and settlement, and an Investment Insight board for vacancy rates, yields and capital growth. Automations move clients between stages and sort properties into groups such as Positive or Not Appropriate based on status.",
+      result:"Clearer communication with clients, less manual follow-up, and an operation that is more transparent and easier to scale.",
+      tools:["monday.com","Automations","Boards"],
+      video:""
+    },
+    {
+      cat:"Hospitality", icon:"tool", tone:"green",
+      title:"Shortlet Operations & Complaints Workspace",
+      blurb:"A monday.com workspace that turns guest complaints into tracked maintenance tasks.",
+      problem:"A shortlet business needed a faster, more organised way to handle client complaints and cut down on manual tasks.",
+      build:"Three boards (Maintenance, Experience, Procurement). A complaint form feeds new items straight onto the Maintenance board, and status-based automations move items between groups such as Not Yet Approved, Not Approved and Approved. An operational dashboard shows issue types and their current status, and a gallery view collects photos of faulty items.",
+      result:"Less manual work, time saved, and complaints handled in one clear place.",
+      tools:["monday.com","Forms","Dashboard"],
+      video:""
+    },
+    {
+      cat:"Education", icon:"cap", tone:"accent",
+      title:"Tutoring Management Hub",
+      blurb:"A single Airtable hub for a tutoring company with over 100 students and 20 tutors, with role-based views.",
+      problem:"A tutoring company managing over 100 students and 20 tutors needed one scalable system to replace its Google Workspace setup, with tutors seeing only their own students.",
+      build:"Tables for Students, Tutors (gallery and grid views), Classes and Notifications, with automations that record entries in the Notification table. Interfaces include a public overview dashboard and a tutor view limited to each tutor's assigned students. The demo uses sample data.",
+      result:"Less manual work, better data accuracy, and a system that scales as the company grows.",
+      tools:["Airtable","Interfaces","Automations"],
+      video:""
+    }
+  ],
+  steps: [
+    {title:"Discovery call", text:"We talk through how things work today, where the bottlenecks are, and what a good result looks like."},
+    {title:"Plan",           text:"I map out the full approach before building anything, so you know exactly what you are getting."},
+    {title:"Build and test", text:"I build in stages and test against real cases, so there are no surprises at handoff."},
+    {title:"Launch and handover", text:"You get clear documentation and a walkthrough, so your team can use the system with confidence."}
+  ],
+  faq: [
+    {q:"How do we get started?", a:"Send me a message about what you want to fix. We'll talk through how things work today, and I'll come back with a clear plan."},
+    {q:"Do I need to understand automation tools to work with you?", a:"No. I handle the build and explain everything in plain language. You only need to know what result you want."},
+    {q:"How long does a typical project take?", a:"It depends on the size of the system. After our first conversation I'll give you a clear timeline before any work starts."},
+    {q:"What industries do you work with?", a:"So far I've built systems for event planning, healthcare, real estate, hospitality and education. The approach works for any team with repetitive, manual processes."},
+    {q:"What happens after the project is delivered?", a:"You get documentation and a walkthrough so your team can use the system confidently. I'm also happy to adjust it as your business changes."}
+  ],
+  ctaLabel: "Get in touch",
+  /* Contact details: fill these in and the buttons and footer links appear. While empty, they stay hidden. */
+  email: "",
+  social: {label:"LinkedIn", url:""},
+  bookingUrl: ""
+};
+/* ============ END OF EDITABLE BLOCK ============ */
+
+const ICONS = {
+  cap:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>',
+  star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+  tool:'<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+  pin:'<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  filter:'<path d="M3 5h18l-7 8v6l-4-2v-4z"/>',
+  repeat:'<path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/>',
+  down:'<path d="M3 6l6 6 4-4 8 8"/><path d="M21 10v6h-6"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>',
+  award:'<circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 21l5-3 5 3-1.5-7.5"/>',
+  check:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/>'
+};
+const ico = (n,tone,extra='') => `<div class="ic t-${tone} ${extra}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg></div>`;
+const $ = id => document.getElementById(id);
+const TONES = ['accent','amber','green'];
+
+document.title = `${SITE.full} – ${SITE.role}`;
+$('logo').innerHTML = `${SITE.first} <span>${SITE.initial}.</span>`;
+$('role').textContent = SITE.role;
+$('name').innerHTML = `${SITE.first} <span class="last">${SITE.last}</span>`;
+$('name2').textContent = SITE.full;
+$('badge').textContent = SITE.badge;
+$('tagline').innerHTML = SITE.tagline;
+$('aboutText').innerHTML = SITE.about.map(t => `<p class="lead">${t}</p>`).join('');
+$('facts').innerHTML = SITE.facts.map(f => `<div class="fact">${ico(f.icon,f.tone)}<div><small>${f.label}</small><strong>${f.value}</strong></div></div>`).join('');
+$('problemTitle').textContent = SITE.problemTitle;
+$('problemLead').textContent = SITE.problemLead;
+$('problems-grid').innerHTML = SITE.problems.map(p => `<div class="card">${ico(p.icon,p.tone)}<h3>${p.title}</h3><p>${p.text}</p></div>`).join('');
+$('benefitTitle').textContent = SITE.benefitTitle;
+$('benefitLead').textContent = SITE.benefitLead;
+$('benefits-grid').innerHTML = SITE.benefits.map((b,i) => `<div class="card"><div class="num t-${TONES[i%3]}">${String(i+1).padStart(2,'0')}</div><h3>${b.title}</h3><p>${b.text}</p></div>`).join('');
+$('services-grid').innerHTML = SITE.services.map((s,i) => `<div class="card"><div class="num t-${TONES[i%3]}">${String(i+1).padStart(2,'0')}</div><h3>${s.title}</h3><p>${s.text}</p><div class="tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`).join('');
+$('workLead').textContent = SITE.workLead;
+$('steps').innerHTML = SITE.steps.map((s,i) => `<div class="step"><div class="n">${String(i+1).padStart(2,'0')}</div><h3>${s.title}</h3><p>${s.text}</p></div>`).join('');
+$('faq-list').innerHTML = SITE.faq.map(f => `<details><summary>${f.q}<span class="pm" aria-hidden="true">+</span></summary><p>${f.a}</p></details>`).join('');
+const contactLinks = [];
+if(SITE.email){ contactLinks.push(`<a href="mailto:${SITE.email}">${SITE.email}</a>`); }
+if(SITE.social && SITE.social.url){ contactLinks.push(`<a href="${SITE.social.url}" target="_blank" rel="noopener">${SITE.social.label}</a>`); }
+$('footerLinks').innerHTML = contactLinks.join(' &nbsp;·&nbsp; ');
+const ctaHref = SITE.bookingUrl || (SITE.email ? 'mailto:' + SITE.email : '');
+if(ctaHref){ $('bookBtn').href = ctaHref; $('bookBtn').textContent = SITE.ctaLabel; } else { $('bookBtn').remove(); }
+$('copy').textContent = `© ${new Date().getFullYear()} ${SITE.full}`;
+
+/* work grid + filters */
+const cats = ['All', ...new Set(SITE.work.map(w => w.cat))];
+$('filters').innerHTML = cats.map((c,i) => `<button class="chip" data-c="${c}" aria-pressed="${i===0}">${c}</button>`).join('');
+$('work-grid').innerHTML = SITE.work.map((w,i) => `
+  <button class="card work" data-cat="${w.cat}" data-i="${i}">
+    <div class="top t-${w.tone}">${ico(w.icon,w.tone)}</div>
+    <div class="body"><div class="cat">${w.cat}</div><h3>${w.title}</h3><p>${w.blurb}</p></div>
+  </button>`).join('');
+$('filters').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if(!b) return;
+  document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c===b));
+  document.querySelectorAll('.work').forEach(w => { w.hidden = !(b.dataset.c==='All' || w.dataset.cat===b.dataset.c); });
+});
+const dlg = $('dlg');
+
+/* turn a YouTube, Loom or Google Drive share link into an embeddable player */
+function videoHtml(url){
+  if(!url) return '';
+  let embed = '';
+  let m;
+  if((m = url.match(/(?:youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{6,})/))) embed = 'https://www.youtube.com/embed/' + m[1];
+  else if((m = url.match(/loom\.com\/(?:share|embed)\/([\w]+)/))) embed = 'https://www.loom.com/embed/' + m[1];
+  else if((m = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/))) embed = 'https://drive.google.com/file/d/' + m[1] + '/preview';
+  if(embed){
+    return `<h4>Video walkthrough</h4><div class="video"><iframe src="${embed}" title="Project video walkthrough" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+  }
+  return `<h4>Video walkthrough</h4><p><a class="btn small" href="${url}" target="_blank" rel="noopener">Watch walkthrough</a></p>`;
+}
+
+$('work-grid').addEventListener('click', e => {
+  const c = e.target.closest('.work'); if(!c) return;
+  const w = SITE.work[c.dataset.i];
+  $('dlgBody').innerHTML = `<button class="x" aria-label="Close" onclick="dlg.close()">×</button>
+    <div class="cat">${w.cat}</div><h3 style="font-size:1.5rem">${w.title}</h3>
+    <h4>The problem</h4><p>${w.problem}</p><h4>What I built</h4><p>${w.build}</p><h4>The result</h4><p>${w.result}</p>
+    ${videoHtml(w.video)}
+    <div class="tags">${w.tools.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`;
+  dlg.showModal();
+});
+dlg.addEventListener('click', e => { if(e.target===dlg) dlg.close(); });
+dlg.addEventListener('close', () => { $('dlgBody').innerHTML = ''; });
+
+/* active nav link */
+const navLinks = [...document.querySelectorAll('.links a')];
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if(en.isIntersecting){ navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href')==='#'+en.target.id)); }
+}), {rootMargin:'-45% 0px -50% 0px'});
+['about','services','work','process','contact'].forEach(id => io.observe($(id)));
+</script>
+</body>
+</html>
