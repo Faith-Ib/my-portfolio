@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E1512">
 <title>Faith Ibukunoluwa Ilesanmi – AI Automation &amp; Workflow Builder</title>
 <meta name="description" content="Faith Ibukunoluwa Ilesanmi builds automated systems and workflows in Airtable, monday.com, Make, n8n and Zapier for small businesses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,24 +12,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FAF8F4; --bg2:#F3F0E9; --surface:#FFFFFF; --ink:#18181B; --muted:#5C5C66; --line:#E8E4DB;
-  --accent:#4338CA; --accent-tint:#ECEBFB; --amber:#B45309; --amber-tint:#FBEBD9;
-  --green:#15803D; --green-tint:#E3F3E9; --chip:#F1EEE7; --cta-bg:#18181B; --cta-ink:#FFFFFF; --cta-muted:#A9A9B4;
+  color-scheme:dark;
+  --bg:#0E1512; --bg2:#121B17; --surface:#17221D; --ink:#F1F5F2; --muted:#9DB0A6; --line:#243329;
+  --accent:#34D399; --accent-tint:#123A2D; --amber:#E3B873; --amber-tint:#352B17;
+  --green:#7DD3FC; --green-tint:#14303F; --chip:#1E2B25; --cta-bg:#08100C; --cta-ink:#FFFFFF; --cta-muted:#A9B8AF;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121216; --bg2:#17171C; --surface:#1D1D24; --ink:#F3F2EE; --muted:#A3A3AE; --line:#2B2B34;
-    --accent:#8F89F7; --accent-tint:#25244D; --amber:#F0A45D; --amber-tint:#3A2A18;
-    --green:#5FCB8B; --green-tint:#17301F; --chip:#26262E; --cta-bg:#0B0B0F; --cta-ink:#FFFFFF; --cta-muted:#A9A9B4;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121216; --bg2:#17171C; --surface:#1D1D24; --ink:#F3F2EE; --muted:#A3A3AE; --line:#2B2B34;
-  --accent:#8F89F7; --accent-tint:#25244D; --amber:#F0A45D; --amber-tint:#3A2A18;
-  --green:#5FCB8B; --green-tint:#17301F; --chip:#26262E; --cta-bg:#0B0B0F; --cta-ink:#FFFFFF; --cta-muted:#A9A9B4;
 }
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
@@ -134,8 +125,8 @@ details[open] summary .pm{transform:rotate(45deg)}
 details p{color:var(--muted);padding:0 50px 22px 0;margin:0}
 
 /* cta + footer */
-.cta{background:var(--cta-bg);color:var(--cta-ink);text-align:center;padding:110px 0;background-image:radial-gradient(ellipse 55% 60% at 50% 0%,rgba(99,91,255,.32),transparent 70%)}
-.cta .pill{background:transparent;color:#B5B0FF;padding:0}
+.cta{background:var(--cta-bg);color:var(--cta-ink);text-align:center;padding:110px 0;background-image:radial-gradient(ellipse 55% 60% at 50% 0%,rgba(16,185,129,.28),transparent 70%)}
+.cta .pill{background:transparent;color:#6EE7B7;padding:0}
 .cta h2{max-width:14ch;margin-left:auto;margin-right:auto}
 .cta p{color:var(--cta-muted);max-width:52ch;margin:0 auto 32px;font-size:1.05rem}
 footer{padding:32px 0;color:var(--muted);font-size:.88rem}
