@@ -248,7 +248,7 @@ footer a:hover{color:var(--ink)}
     <div class="wrap">
       <span class="pill">Ready to work together?</span>
       <h2>Let's build something that actually works</h2>
-      <p>Tell me what needs solving and we'll work out the next step together.</p>
+      <p>Tell me what needs solving and we'll work out the next step together. You can hire me through my Upwork profile.</p>
       <a class="btn light" id="bookBtn" href="#">Get in touch</a>
     </div>
   </section>
@@ -374,11 +374,11 @@ const SITE = {
     {q:"What industries do you work with?", a:"So far I've built systems for event planning, healthcare, real estate, hospitality and education. The approach works for any team with repetitive, manual processes."},
     {q:"What happens after the project is delivered?", a:"You get documentation and a walkthrough so your team can use the system confidently. I'm also happy to adjust it as your business changes."}
   ],
-  ctaLabel: "Get in touch",
+  ctaLabel: "Hire me on Upwork",
   /* Contact details: fill these in and the buttons and footer links appear. While empty, they stay hidden. */
   email: "",
-  social: {label:"LinkedIn", url:""},
-  bookingUrl: ""
+  social: {label:"Upwork profile", url:"https://www.upwork.com/freelancers/~0180b30e41b66d39f8"},
+  bookingUrl: "https://www.upwork.com/freelancers/~0180b30e41b66d39f8"
 };
 /* ============ END OF EDITABLE BLOCK ============ */
 
@@ -422,7 +422,7 @@ if(SITE.email){ contactLinks.push(`<a href="mailto:${SITE.email}">${SITE.email}<
 if(SITE.social && SITE.social.url){ contactLinks.push(`<a href="${SITE.social.url}" target="_blank" rel="noopener">${SITE.social.label}</a>`); }
 $('footerLinks').innerHTML = contactLinks.join(' &nbsp;·&nbsp; ');
 const ctaHref = SITE.bookingUrl || (SITE.email ? 'mailto:' + SITE.email : '');
-if(ctaHref){ $('bookBtn').href = ctaHref; $('bookBtn').textContent = SITE.ctaLabel; } else { $('bookBtn').remove(); }
+if(ctaHref){ $('bookBtn').href = ctaHref; $('bookBtn').textContent = SITE.ctaLabel; if(/^https?:/.test(ctaHref)){ $('bookBtn').target = '_blank'; $('bookBtn').rel = 'noopener'; } } else { $('bookBtn').remove(); }
 $('copy').textContent = `© ${new Date().getFullYear()} ${SITE.full}`;
 
 /* work grid + filters */
